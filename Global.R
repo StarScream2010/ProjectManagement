@@ -39,6 +39,9 @@ library(rmarkdown)
 #saveRDS(raw_data_projects,"Projects.rds")
 
 
-raw_data_projects <- readRDS("Projects.rds")
-raw_data_tasks <- readRDS("Tasks.rds")
+raw_data_projects <- readRDS("Projects.rds") %>% 
+  mutate(PROJECT.NAME = as.character(PROJECT.NAME),PROJECT.TYPE = as.character(PROJECT.TYPE)) %>%
+  mutate_at(vars(contains('DATE')), funs(as.Date(.,format="%d-%m-%Y")))
+raw_data_tasks <- readRDS("Tasks.rds") %>%
+  mutate_at(vars(contains('DATE')), funs(as.Date(.,format="%d-%m-%Y")))
    

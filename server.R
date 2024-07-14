@@ -65,10 +65,10 @@ shinyServer(function(input, output, session){
   ##------------------------------------------------------------------------------------------------------------------------------------------------------
   output$Projects <- renderRHandsontable({
     
-    rhandsontable(dt_projects(), readOnly = FALSE, search = TRUE, selectCallback = TRUE ) %>% 
+     rhandsontable(dt_projects(), readOnly = FALSE, search = TRUE, selectCallback = TRUE) %>% 
       hot_cols(columnSorting = TRUE, manualColumnMove = TRUE, manualColumnResize = TRUE ) %>%
-      hot_table(highlightRow = TRUE, highlightCol = TRUE) %>% 
-      hot_col("PROJECT.STATUS", renderer = text_renderer, type = "autocomplete") %>% 
+      hot_table(highlightRow = TRUE, highlightCol = TRUE) %>%
+      hot_col("PROJECT.STATUS", renderer = text_renderer, type = "autocomplete") %>%
       hot_rows(fixedRowsTop = 1)
       
       
